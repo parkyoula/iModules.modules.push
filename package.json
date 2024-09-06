@@ -1,0 +1,38 @@
+{
+    "id": "tools.moimz.imodules.modules.push",
+    "icon": "mi mi-notification",
+    "title": {
+        "ko": "알림"
+    },
+    "version": "4.0.0",
+    "description": {
+        "ko": "알림을 위한 모듈입니다."
+    },
+    "author": {
+        "name": "Arzz",
+        "email": "arzz@arzz.com"
+    },
+    "homepage": "https://www.imodules.io",
+    "versionChecker": "https://api.moimz.com/download/latest",
+    "dependencies": {
+        "core": "4.0.0"
+    },
+    "language": "ko",
+    "global": true,
+    "admin": true,
+    "context": true,
+    "configs": {
+        "template": {
+            "type": "template",
+            "label": {
+                "ko": "템플릿"
+            },
+            "component": {
+                "type": "module",
+                "name": "push"
+            },
+            "default": "default"
+        }
+    },
+    "databases": {}
+}
