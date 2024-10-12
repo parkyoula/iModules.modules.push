@@ -34,5 +34,121 @@
             "default": "default"
         }
     },
-    "databases": {}
+    "databases": {
+        "messages": {
+            "columns": {
+                "message_id": {
+                    "type": "char",
+                    "length": 36
+                },
+                "member_id": {
+                    "type": "int",
+                    "length": 11,
+                    "comment": "수신자회원고유값"
+                },
+                "component_type": {
+                    "type": "varchar",
+                    "length": 10,
+                    "comment": "메시지를 전송한 컴포넌트종류"
+                },
+                "component_name": {
+                    "type": "varchar",
+                    "length": 50,
+                    "comment": "메시지를 전송한 컴포넌트명"
+                },
+                "target_type": {
+                    "type": "varchar",
+                    "length": 50,
+                    "comment": "메시지대상"
+                },
+                "target_id": {
+                    "type": "varchar",
+                    "length": 100,
+                    "comment": "메시지대상고유값"
+                },
+                "code": {
+                    "type": "varchar",
+                    "length": 20,
+                    "comment": "메시지코드"
+                },
+                "contents": {
+                    "type": "json",
+                    "comment": "알림내용"
+                },
+                "sended_by": {
+                    "type": "int",
+                    "length": 11,
+                    "comment": "전송자회원고유값"
+                },
+                "sended_at": {
+                    "type": "int",
+                    "length": 11,
+                    "comment": "전송시각"
+                },
+                "is_checked": {
+                    "type": "enum",
+                    "length": "'TRUE','FALSE'",
+                    "default": "FALSE",
+                    "comment": "알림확인여부"
+                },
+                "is_readed": {
+                    "type": "enum",
+                    "length": "'TRUE','FALSE'",
+                    "default": "FALSE",
+                    "comment": "읽음여부"
+                }
+            },
+            "indexes": {
+                "message_id": "primary_key",
+                "member_id,component_type,component_name,target_type,target_id,code": "index"
+            },
+            "comment": "아이모듈 알림 메시지"
+        },
+        "settings": {
+            "columns": {
+                "member_id": {
+                    "type": "int",
+                    "length": 11,
+                    "comment": "회원고유값"
+                },
+                "component_type": {
+                    "type": "varchar",
+                    "length": 10,
+                    "comment": "메시지를 전송한 컴포넌트종류"
+                },
+                "component_name": {
+                    "type": "varchar",
+                    "length": 50,
+                    "comment": "메시지를 전송한 컴포넌트명"
+                },
+                "code": {
+                    "type": "varchar",
+                    "length": 20,
+                    "comment": "메시지코드"
+                },
+                "web": {
+                    "type": "enum",
+                    "length": "'TRUE','FALSE'",
+                    "default": "TRUE",
+                    "comment": "웹"
+                },
+                "sms": {
+                    "type": "enum",
+                    "length": "'TRUE','FALSE'",
+                    "default": "FALSE",
+                    "comment": "모바일"
+                },
+                "email": {
+                    "type": "enum",
+                    "length": "'TRUE','FALSE'",
+                    "default": "FALSE",
+                    "comment": "이메일"
+                }
+            },
+            "indexes": {
+                "member_id,component_type,component_name,code": "primary_key"
+            },
+            "comment": "아이모듈 알림 수신설정"
+        }
+    }
 }
