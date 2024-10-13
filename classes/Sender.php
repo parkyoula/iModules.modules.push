@@ -7,7 +7,7 @@
  * @file /modules/push/classes/Sender.php
  * @author Arzz <arzz@arzz.com>
  * @license MIT License
- * @modified 2024. 9. 25.
+ * @modified 2024. 10. 13.
  */
 namespace modules\push;
 class Sender
@@ -38,9 +38,9 @@ class Sender
     private ?string $_email;
 
     /**
-     * @var ?string $_phone 수신자 휴대전화번호
+     * @var ?string $_cellphone 수신자 휴대전화번호
      */
-    private ?string $_phone;
+    private ?string $_cellphone;
 
     /**
      * @var string $_target_type 알림대상종류
@@ -90,18 +90,19 @@ class Sender
      * @param int $member_id 수신자 회원고유값 (0 인 경우 비회원으로 이메일 또는 전화번호를 추가로 설정해주어야 한다.)
      * @param ?string $name 수신자명
      * @param ?string $email 이메일주소
-     * @param ?string $phone 휴대전화번호
+     * @param ?string $cellphone 휴대전화번호
+     * @return \modules\push\Sender $this
      */
     public function setTo(
         int $member_id,
         ?string $name = null,
         ?string $email = null,
-        ?string $phone = null
+        ?string $cellphone = null
     ): \modules\push\Sender {
         $this->_member_id = $member_id;
         $this->_name = $name;
         $this->_email = $email;
-        $this->_phone = $phone;
+        $this->_cellphone = $cellphone;
 
         return $this;
     }
@@ -256,10 +257,10 @@ class Sender
                     ->execute();
             }
 
-            if ($this->_phone !== null && $channel == 'SMS' && \Modules::isInstalled('sms') == true) {
+            if ($this->_cellphone !== null && $channel == 'SMS' && \Modules::isInstalled('sms') == true) {
                 $mPush
                     ->getProtocol($this->_component)
-                    ->getSMS($this->getMessage(), $this->_name, $this->_phone)
+                    ->getSMS($this->getMessage(), $this->_name, $this->_cellphone)
                     ?->send();
             }
 

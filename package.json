@@ -6,7 +6,7 @@
     },
     "version": "4.0.0",
     "description": {
-        "ko": "알림을 위한 모듈입니다."
+        "ko": "알림발송을 위한 모듈입니다."
     },
     "author": {
         "name": "Arzz",
@@ -39,37 +39,37 @@
             "columns": {
                 "message_id": {
                     "type": "char",
-                    "length": 36
+                    "length": 36,
+                    "comment": "알림고유값"
                 },
                 "member_id": {
                     "type": "int",
-                    "length": 11,
                     "comment": "수신자회원고유값"
                 },
                 "component_type": {
                     "type": "varchar",
                     "length": 10,
-                    "comment": "메시지를 전송한 컴포넌트종류"
+                    "comment": "알림을 전송한 컴포넌트종류"
                 },
                 "component_name": {
                     "type": "varchar",
                     "length": 50,
-                    "comment": "메시지를 전송한 컴포넌트명"
+                    "comment": "알림을 전송한 컴포넌트명"
                 },
                 "target_type": {
                     "type": "varchar",
                     "length": 50,
-                    "comment": "메시지대상"
+                    "comment": "알림대상"
                 },
                 "target_id": {
                     "type": "varchar",
                     "length": 100,
-                    "comment": "메시지대상고유값"
+                    "comment": "알림대상고유값"
                 },
                 "code": {
                     "type": "varchar",
                     "length": 20,
-                    "comment": "메시지코드"
+                    "comment": "알림코드"
                 },
                 "contents": {
                     "type": "json",
@@ -77,13 +77,11 @@
                 },
                 "sended_by": {
                     "type": "int",
-                    "length": 11,
-                    "comment": "전송자회원고유값"
+                    "comment": "발송자회원고유값"
                 },
                 "sended_at": {
                     "type": "int",
-                    "length": 11,
-                    "comment": "전송시각"
+                    "comment": "발송시각"
                 },
                 "is_checked": {
                     "type": "enum",
@@ -108,41 +106,40 @@
             "columns": {
                 "member_id": {
                     "type": "int",
-                    "length": 11,
                     "comment": "회원고유값"
                 },
                 "component_type": {
                     "type": "varchar",
                     "length": 10,
-                    "comment": "메시지를 전송한 컴포넌트종류"
+                    "comment": "컴포넌트종류"
                 },
                 "component_name": {
                     "type": "varchar",
                     "length": 50,
-                    "comment": "메시지를 전송한 컴포넌트명"
+                    "comment": "컴포넌트명"
                 },
                 "code": {
                     "type": "varchar",
                     "length": 20,
-                    "comment": "메시지코드"
+                    "comment": "알림코드"
                 },
                 "web": {
                     "type": "enum",
                     "length": "'TRUE','FALSE'",
                     "default": "TRUE",
-                    "comment": "웹"
+                    "comment": "웹수신여부"
                 },
                 "sms": {
                     "type": "enum",
                     "length": "'TRUE','FALSE'",
                     "default": "FALSE",
-                    "comment": "모바일"
+                    "comment": "SMS수신여부"
                 },
                 "email": {
                     "type": "enum",
                     "length": "'TRUE','FALSE'",
                     "default": "FALSE",
-                    "comment": "이메일"
+                    "comment": "이메일수신여부"
                 }
             },
             "indexes": {

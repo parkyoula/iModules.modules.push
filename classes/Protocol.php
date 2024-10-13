@@ -7,7 +7,7 @@
  * @file /modules/push/classes/Protocol.php
  * @author Arzz <arzz@arzz.com>
  * @license MIT License
- * @modified 2024. 10. 6.
+ * @modified 2024. 10. 13.
  */
 namespace modules\push;
 class Protocol extends \Protocol
@@ -33,10 +33,10 @@ class Protocol extends \Protocol
      *
      * @param \modules\push\dtos\Message $message 알림메시지객체
      * @param ?string $name 수신자명
-     * @param ?string $phone 수신자번호
+     * @param ?string $cellphone 수신자번호
      * @param ?\modules\sms\Sender $sender SMS 전송자 객체 (NULL 인 경우 SMS를 발송하지 않는다.)
      */
-    public function getSMS(\modules\push\dtos\Message $message, ?string $name, ?string $phone): ?\modules\sms\Sender
+    public function getSMS(\modules\push\dtos\Message $message, ?string $name, ?string $cellphone): ?\modules\sms\Sender
     {
         return null;
     }
