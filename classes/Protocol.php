@@ -7,13 +7,23 @@
  * @file /modules/push/classes/Protocol.php
  * @author Arzz <arzz@arzz.com>
  * @license MIT License
- * @modified 2024. 10. 13.
+ * @modified 2024. 10. 14.
  */
 namespace modules\push;
 class Protocol extends \Protocol
 {
     /**
-     * 회원에 따른 기본 알림수신채널을 가져온다.
+     * 전체 알림종류를 가져온다.
+     *
+     * @return \modules\push\dtos\Code[] $codes
+     */
+    public function getCodes(): array
+    {
+        return [];
+    }
+
+    /**
+     * 회원 및 알림종류별 기본 알림수신채널을 가져온다.
      *
      * @param int $member_id 기본설정을 가져올 회원고유값 (0 인 경우 비회원으로 기본 설정 사용)
      * @param string $code 알림종류

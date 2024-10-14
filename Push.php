@@ -7,7 +7,7 @@
  * @file /modules/push/Push.php
  * @author Arzz <arzz@arzz.com>
  * @license MIT License
- * @modified 2024. 10. 6.
+ * @modified 2024. 10. 14.
  */
 namespace modules\push;
 class Push extends \Module
@@ -16,6 +16,11 @@ class Push extends \Module
      * @var \modules\push\Protocol $_protocol 기본 규약 클래스
      */
     private static \modules\push\Protocol $_protocol;
+
+    /**
+     * @var \modules\push\dtos\Code[] $_codes 알림종류
+     */
+    private static array $_codes = [];
 
     /**
      * 모듈을 설정을 초기화한다.
@@ -56,6 +61,23 @@ class Push extends \Module
         } else {
             return $protocol;
         }
+    }
+
+    /**
+     * 알림종류 객체를 생성한다.
+     *
+     * @param \Component $component 알림을 전송하는 컴포넌트 객체
+     * @param string $code 알림코드
+     * @return \modules\push\dtos\Code $code
+     */
+    public function setCode(\Component $component, string $code): \modules\push\dtos\Code
+    {
+        if (isset(self::$_codes[$component->getType() . '@' . $component->getName() . '@' . $code]) == false) {
+            self::$_codes[
+                $component->getType() . '@' . $component->getName() . '@' . $code
+            ] = new \modules\push\dtos\Code($component, $code);
+        }
+        return self::$_codes[$component->getType() . '@' . $component->getName() . '@' . $code];
     }
 
     /**
