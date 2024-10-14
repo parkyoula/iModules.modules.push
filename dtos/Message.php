@@ -164,6 +164,16 @@ class Message
     }
 
     /**
+     * 마지막 알림내용을 가져온다.
+     *
+     * @return mixed $content
+     */
+    public function getLatestContent(): mixed
+    {
+        return count($this->_contents) > 0 ? $this->_contents[count($this->_contents) - 1] : null;
+    }
+
+    /**
      * 알림을 전송한 회원정보를 가져온다.
      *
      * @return ?\modules\member\Member $sended_by (NULL 인 경우 시스템발송)
