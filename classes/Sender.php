@@ -278,6 +278,7 @@ class Sender
                         'sended_at' => $sended_at,
                         'is_checked' => 'FALSE',
                         'is_readed' => 'FALSE',
+                        'type' => $this->_type,
                     ])
                     ->execute();
             }
